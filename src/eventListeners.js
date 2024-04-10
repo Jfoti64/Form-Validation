@@ -17,25 +17,17 @@ const zipMessages = {
 };
 
 emailInput.addEventListener('blur', () => {
-    validateInput(emailInput, emailFeedbackElement, emailMessages);
+  validateInput(emailInput, emailFeedbackElement, emailMessages);
 });
 
 emailInput.addEventListener('input', () => {
-    if (emailInput.validity.valid) {
-        emailFeedbackElement.style.display = 'none';
-    } else {
-        validateInput(emailInput, emailFeedbackElement, emailMessages);
-    }
+  validateInput(emailInput, emailFeedbackElement, emailMessages);
 });
 
 zipInput.addEventListener('blur', () => {
-    validateInput(zipInput, zipFeedbackElement, zipMessages);
+  validateInput(zipInput, zipFeedbackElement, zipMessages);
 });
 
 zipInput.addEventListener('input', () => {
-  if (zipInput.validity.valid) {
-    zipFeedbackElement.style.display = 'none';
-  } else {
-    validateInput(zipInput, zipFeedbackElement, zipMessages);
-  }
+  validateInput(zipInput, zipFeedbackElement, zipMessages);
 });
