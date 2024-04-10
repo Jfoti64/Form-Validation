@@ -1,21 +1,41 @@
-import { emailFeedback } from './validation';
+import { validateInput } from './validation';
 
 const emailInput = document.getElementById('email');
+const emailFeedbackElement = document.getElementById('emailFeedback');
+const zipInput = document.getElementById('zip');
+const zipFeedbackElement = document.getElementById('zipFeedback');
 
-// Use the blur event to report validity once the user clicks off the element
+const emailMessages = {
+  valueMissing: 'This field is required.',
+  typeMismatch: 'Please enter a valid email.',
+  tooShort: 'Please lengthen this email to 5 characters or more.',
+};
+
+const zipMessages = {
+  valueMissing: 'This field is required.',
+  patternMismatch: 'Zip code must be 5 digits.',
+};
+
 emailInput.addEventListener('blur', () => {
-  const feedbackElement = document.getElementById('emailFeedback');
-  if (!emailInput.validity.valid) {
-    emailFeedback(emailInput, feedbackElement);
-    feedbackElement.style.display = 'block';
-  }
+    validateInput(emailInput, emailFeedbackElement, emailMessages);
 });
 
 emailInput.addEventListener('input', () => {
-  const feedbackElement = document.getElementById('emailFeedback');
-  if (emailInput.validity.valid) {
-    feedbackElement.style.display = 'none';
+    if (emailInput.validity.valid) {
+        emailFeedbackElement.style.display = 'none';
+    } else {
+        validateInput(emailInput, emailFeedbackElement, emailMessages);
+    }
+});
+
+zipInput.addEventListener('blur', () => {
+    validateInput(zipInput, zipFeedbackElement, zipMessages);
+});
+
+zipInput.addEventListener('input', () => {
+  if (zipInput.validity.valid) {
+    zipFeedbackElement.style.display = 'none';
   } else {
-    emailFeedback(emailInput, feedbackElement);
+    validateInput(zipInput, zipFeedbackElement, zipMessages);
   }
 });

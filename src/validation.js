@@ -1,17 +1,16 @@
-function emailFeedback(input, feedbackElement) {
-  if (input.validity.valid) {
-    feedbackElement.style.display = 'none';
-  } else {
-    // Check different types of validity errors and set messages accordingly
+function validateInput(input, feedbackElement, customMessages) {
+    let message = '';
     if (input.validity.valueMissing) {
-      feedbackElement.textContent = 'This field is required.';
+      message = customMessages.valueMissing;
     } else if (input.validity.typeMismatch) {
-      feedbackElement.textContent = 'Please enter a valid email.';
+      message = customMessages.typeMismatch;
     } else if (input.validity.tooShort) {
-      feedbackElement.textContent = `Please lengthen this email to ${input.minLength} characters or more. You are currently using ${input.value.length} characters.`;
+      message = customMessages.tooShort;
+    } else if (input.validity.patternMismatch) {
+      message = customMessages.patternMismatch;
     }
-    feedbackElement.style.display = 'block';
+    feedbackElement.textContent = message;
+    feedbackElement.style.display = message ? 'block' : 'none';
   }
-}
 
-export { emailFeedback };
+export { validateInput };

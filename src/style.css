@@ -1,8 +1,13 @@
 input:invalid {
-  border-color: red; 
+  border-color: red;
 }
 
-#emailFeedback {
+input:valid {
+  border-color: green;
+}
+
+
+#emailFeedback, #zipFeedback {
   display: none;
   color: red;
 }
