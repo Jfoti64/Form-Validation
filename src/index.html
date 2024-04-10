@@ -7,20 +7,24 @@
 </head>
 <body>
     <form action="" id="validationForm">
-        <label for="email">email</label>
-        <input type="email" name="email">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" pattern=".+@.+\.com" required>
+        <span id="emailFeedback" style="color: red; display: none;">Please enter a valid email address.</span>
 
         <label for="country">country</label>
-        <input type="text" name="country">
+        <input type="text" name="country" required>
 
-        <label for="zip">zip</label>
-        <input type="number" name="zip">
+        <label for="zip">ZIP</label>
+        <input type="text" name="zip" id="zip" pattern="\d{5}(-\d{4})?" title="Enter a 5-digit ZIP code or a ZIP+4 code in the format 12345-6789." required>
+    
 
         <label for="password">password</label>
-        <input type="text" name="password">
+        <input type="text" name="password" required>
 
         <label for="confirmPassword">confirm password</label>
-        <input type="text" name="confirmPassword">
+        <input type="text" name="confirmPassword" required>
+
+        <button type="submit" id="submitButton">submit</button>
     </form>
 </body>
 </html>
