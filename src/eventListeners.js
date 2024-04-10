@@ -6,6 +6,8 @@ const countryInput = document.getElementById('country');
 const countryFeedbackElement = document.getElementById('countryFeedback');
 const zipInput = document.getElementById('zip');
 const zipFeedbackElement = document.getElementById('zipFeedback');
+const passwordInput = document.getElementById('password');
+const passwordFeedback = document.getElementById('passwordFeedback');
 
 const emailMessages = {
   valueMissing: 'This field is required.',
@@ -21,6 +23,11 @@ const zipMessages = {
 const countryMessages = {
   valueMissing: 'This field is required.',
 };
+
+const passwordMessages = {
+    valueMissing: 'This field is required.',
+    patternMismatch: 'Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.',
+}
 
 emailInput.addEventListener('blur', () => {
   validateInput(emailInput, emailFeedbackElement, emailMessages);
@@ -44,4 +51,25 @@ countryInput.addEventListener('blur', () => {
 
 countryInput.addEventListener('input', () => {
   validateInput(countryInput, countryFeedbackElement, countryMessages);
+});
+
+passwordInput.addEventListener('blur', () => {
+    validateInput(passwordInput, passwordFeedback, passwordMessages);
+});
+
+passwordInput.addEventListener('input', () => {
+    validateInput(passwordInput, passwordFeedback, passwordMessages);
+});
+
+document.getElementById('validationForm').addEventListener('submit', (event) => {
+  // Prevent default form submission
+  event.preventDefault();
+
+  // Check if the form is valid before "submitting"
+  if (document.getElementById('validationForm').checkValidity()) {
+    // Handle successful submission (e.g., display a success message or redirect)
+    alert('Hi5');
+  } else {
+    // Optionally focus the first invalid input for better user experience
+  }
 });
