@@ -2,6 +2,8 @@ import { validateInput } from './validation';
 
 const emailInput = document.getElementById('email');
 const emailFeedbackElement = document.getElementById('emailFeedback');
+const countryInput = document.getElementById('country');
+const countryFeedbackElement = document.getElementById('countryFeedback');
 const zipInput = document.getElementById('zip');
 const zipFeedbackElement = document.getElementById('zipFeedback');
 
@@ -14,6 +16,10 @@ const emailMessages = {
 const zipMessages = {
   valueMissing: 'This field is required.',
   patternMismatch: 'Zip code must be 5 digits.',
+};
+
+const countryMessages = {
+  valueMissing: 'This field is required.',
 };
 
 emailInput.addEventListener('blur', () => {
@@ -30,4 +36,12 @@ zipInput.addEventListener('blur', () => {
 
 zipInput.addEventListener('input', () => {
   validateInput(zipInput, zipFeedbackElement, zipMessages);
+});
+
+countryInput.addEventListener('blur', () => {
+  validateInput(countryInput, countryFeedbackElement, countryMessages);
+});
+
+countryInput.addEventListener('input', () => {
+  validateInput(countryInput, countryFeedbackElement, countryMessages);
 });
