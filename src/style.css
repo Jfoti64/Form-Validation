@@ -6,8 +6,11 @@ input:valid {
   border-color: green;
 }
 
-
-#emailFeedback, #zipFeedback, #countryFeedback, #passwordFeedback, #confirmPasswordFeedback {
+#emailFeedback,
+#zipFeedback,
+#countryFeedback,
+#passwordFeedback,
+#confirmPasswordFeedback {
   display: none;
   color: red;
 }
