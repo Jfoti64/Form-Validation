@@ -7,7 +7,7 @@ input:valid {
 }
 
 
-#emailFeedback, #zipFeedback, #countryFeedback, #passwordFeedback {
+#emailFeedback, #zipFeedback, #countryFeedback, #passwordFeedback, #confirmPasswordFeedback {
   display: none;
   color: red;
 }
