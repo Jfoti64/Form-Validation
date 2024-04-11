@@ -9,9 +9,7 @@ const zipFeedbackElement = document.getElementById('zipFeedback');
 const passwordInput = document.getElementById('password');
 const passwordFeedback = document.getElementById('passwordFeedback');
 const confirmPasswordInput = document.getElementById('confirmPassword');
-const confirmPasswordFeedback = document.getElementById(
-  'confirmPasswordFeedback',
-);
+const confirmPasswordFeedback = document.getElementById('confirmPasswordFeedback');
 
 const emailMessages = {
   valueMissing: 'This field is required.',
@@ -71,55 +69,31 @@ passwordInput.addEventListener('input', () => {
 });
 
 confirmPasswordInput.addEventListener('blur', () => {
-  validateInput(
-    confirmPasswordInput,
-    confirmPasswordFeedback,
-    confirmPasswordMessages,
-  );
-  validateMatchingPasswords(
-    passwordInput,
-    confirmPasswordInput,
-    confirmPasswordFeedback,
-  );
+  validateInput(confirmPasswordInput, confirmPasswordFeedback, confirmPasswordMessages);
+  validateMatchingPasswords(passwordInput, confirmPasswordInput, confirmPasswordFeedback);
 });
 
 confirmPasswordInput.addEventListener('input', () => {
-  validateInput(
-    confirmPasswordInput,
-    confirmPasswordFeedback,
-    confirmPasswordMessages,
-  );
-  validateMatchingPasswords(
-    passwordInput,
-    confirmPasswordInput,
-    confirmPasswordFeedback,
-  );
+  validateInput(confirmPasswordInput, confirmPasswordFeedback, confirmPasswordMessages);
+  validateMatchingPasswords(passwordInput, confirmPasswordInput, confirmPasswordFeedback);
 });
 
-document
-  .getElementById('validationForm')
-  .addEventListener('submit', (event) => {
-    // Prevent the form from submitting until we explicitly allow it
-    event.preventDefault();
+document.getElementById('validationForm').addEventListener('submit', (event) => {
+  // Prevent the form from submitting until we explicitly allow it
+  event.preventDefault();
 
-    validateMatchingPasswords(
-      passwordInput,
-      confirmPasswordInput,
-      confirmPasswordFeedback,
-    );
+  validateMatchingPasswords(passwordInput, confirmPasswordInput, confirmPasswordFeedback);
 
-    if (
-      document.getElementById('validationForm').checkValidity() &&
-      passwordInput.value === confirmPasswordInput.value
-    ) {
-      alert('Hi5');
-    } else {
-      const form = document.getElementById('validationForm');
-      const firstInvalidInput = form.querySelector(
-        'input:invalid',
-      );
-      if (firstInvalidInput) {
-        firstInvalidInput.focus();
-      }
+  if (
+    document.getElementById('validationForm').checkValidity() &&
+    passwordInput.value === confirmPasswordInput.value
+  ) {
+    alert('Hi5');
+  } else {
+    const form = document.getElementById('validationForm');
+    const firstInvalidInput = form.querySelector('input:invalid');
+    if (firstInvalidInput) {
+      firstInvalidInput.focus();
     }
-  });
+  }
+});
